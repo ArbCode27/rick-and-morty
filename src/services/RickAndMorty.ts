@@ -1,5 +1,5 @@
 import type ICharacter from '@/interfaces/ICharacter'
-import { reactive, ref, type Reactive, type Ref } from 'vue'
+import { ref, type Ref } from 'vue'
 
 export class RickAndMorty {
   private character: Ref<ICharacter>
@@ -18,9 +18,9 @@ export class RickAndMorty {
     return this.character
   }
 
-  async fetchAll() {
+  async fetchAll(page: number) {
     try {
-      const res = await fetch('https://rickandmortyapi.com/api/character/')
+      const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
       const json = await res.json()
       this.characters.value = await json.results
     } catch (err) {

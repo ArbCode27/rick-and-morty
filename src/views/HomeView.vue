@@ -4,7 +4,7 @@ import CardList from '@/components/home/CardList.vue'
 </script>
 
 <template>
-  <main>
+  <main class="pb-20">
     <PrincipalBanner />
     <CardList />
   </main>

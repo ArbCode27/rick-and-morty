@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div class="flex gap-3">
-      <div>
+  <div class="w-full md:w-[600px] mb-4 md:mb-0">
+    <div class="w-full grid md:grid-cols-3 gap-3">
+      <div class="w-full">
         <div class="label">
           <span class="label-text">Status</span>
         </div>

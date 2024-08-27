@@ -6,7 +6,7 @@
       <figure class="w-[80px] h-[80px]">
         <img class="w-full h-full object-cover" :src="logo" alt="logo" />
       </figure>
-      <p>Rick and Morty</p>
+      <p class="hidden md:block">Rick and Morty</p>
     </RouterLink>
 
     <RouterLink
@@ -15,18 +15,30 @@
       class="btn btn-outline btn-primary px-8"
       >Login</RouterLink
     >
-    <button v-if="session.session" class="btn btn-outline btn-primary px-8" @click="session.logout">
-      Logout
-    </button>
+    <div class="flex gap-2">
+      <button
+        v-if="session.session && route.path !== '/game'"
+        class="btn btn-primary px-8"
+        @click="router.push('/game')"
+      >
+        Game
+      </button>
+      <button v-if="session.session" class="btn btn-outline btn-error px-8" @click="session.logout">
+        Logout
+      </button>
+    </div>
   </header>
   <slot></slot>
 </template>
 <script setup lang="ts">
 import logo from '@/assets/logo.png'
 import { RouterLink } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 
 const session = useSessionStore()
+const router = useRouter()
+const route = useRoute()
 </script>
 <style scoped>
 .navbar-bg {

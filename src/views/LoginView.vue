@@ -60,7 +60,6 @@
               required
             />
           </div>
-          {{ session.session }}
           <div class="form-control mt-6">
             <button class="btn btn-primary" @click.prevent="login">Login</button>
           </div>

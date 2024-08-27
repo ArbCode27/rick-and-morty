@@ -10,7 +10,7 @@
 
       <div class="text-center">
         <h1 class="text-5xl font-bold mb-3">{{ character.name }}</h1>
-        <div class="stats shadow">
+        <div class="stats stats-vertical md:stats-horizontal w-full shadow">
           <div class="stat place-items-center">
             <div class="stat-title">Species</div>
             <div class="stat-value">{{ character.species }}</div>

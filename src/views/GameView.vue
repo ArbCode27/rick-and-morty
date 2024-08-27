@@ -1,8 +1,18 @@
 <template>
-  <div
-    v-if="characters[0]?.items"
-    class="w-full h-[100vh] flex items-end justify-center gap-8 p-2 pb-12"
-  >
+  <div class="hero pt-32">
+    <div class="hero-content text-center">
+      <div class="max-w-xl">
+        <h1 class="text-5xl font-bold text-secondary">Human or Alien?</h1>
+        <p class="py-6">
+          Join the challenge of ‘Rick and Morty: Human or Alien?’ 🚀🔍 Prove your knowledge of the
+          multiverse by separating the characters of the series according to their species. Can you
+          identify who is human and who is an alien in this galactic game? Get ready to test your
+          memory and dive into this interdimensional adventure!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div v-if="characters[0]?.items" class="w-full flex items-end justify-center gap-8 p-2 pb-12">
     <GameCard
       @dragover.prevent
       @dragenter.prevent

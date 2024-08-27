@@ -1,7 +1,7 @@
 <template>
   <div class="md:px-20">
     <div class="divider"></div>
-    <div class="flex flex-col lg:flex-row justify-between items-end pb-4">
+    <div class="flex flex-col lg:flex-row justify-between items-end pb-4 px-4">
       <FilterCharacters
         @handlerStatus="handlerStatus"
         @handlerSpecies="handlerSpecies"
@@ -37,15 +37,51 @@
       :origin="item.origin"
     />
   </transition-group>
+  <div class="w-full flex justify-center">
+    <div class="join">
+      <button
+        @click="handlerPage(1)"
+        class="join-item btn"
+        :class="[store.page === 1 ? 'btn-active' : '']"
+      >
+        1
+      </button>
+      <button
+        @click="handlerPage(2)"
+        class="join-item btn"
+        :class="[store.page === 2 ? 'btn-active' : '']"
+      >
+        2
+      </button>
+      <button
+        @click="handlerPage(3)"
+        class="join-item btn"
+        :class="[store.page === 3 ? 'btn-active' : '']"
+      >
+        3
+      </button>
+      <button
+        @click="handlerPage(4)"
+        class="join-item btn"
+        :class="[store.page === 4 ? 'btn-active' : '']"
+      >
+        4
+      </button>
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
 import { RickAndMorty } from '@/services/RickAndMorty'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import CharacterCard from '../CharacterCard.vue'
 import FilterCharacters from './FilterCharacters.vue'
+import { useApiStore } from '@/stores/api'
 
+const store = useApiStore()
 const services = new RickAndMorty()
 const characters = services.getAll()
+
+// ITEMS
 const search = ref('')
 const items = computed(() => {
   const items = characters.value.filter((item) => {
@@ -82,8 +118,15 @@ const handlerSpecies = (value: string) => {
 const handlerGender = (value: string) => {
   filters.gender = value
 }
+
+//PAGINATION
+const handlerPage = (page: number) => store.selectPage(page)
+watch(store, async () => {
+  await services.fetchAll(store.page)
+})
+
 onMounted(async () => {
-  await services.fetchAll()
+  await services.fetchAll(store.page)
 })
 </script>
 <style>
