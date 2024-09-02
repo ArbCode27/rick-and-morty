@@ -1,12 +1,14 @@
 // https://on.cypress.io/api
 
 describe('Login test features', () => {
+  //@ts-ignore
   it('Enter to protected route without auth', () => {
     cy.visit('/character/1')
     cy.url().should('eq', 'http://localhost:4173/login')
   })
 
   it('User with wrong credentials can not pass', () => {
+    //@ts-ignore
     cy.login('admin@admin.com', '1234')
     cy.contains('Incorrect email or password')
     cy.visit('/character/1')
@@ -14,6 +16,7 @@ describe('Login test features', () => {
   })
 
   it('User with correct credentials can pass and access to protected routes', () => {
+    //@ts-ignore
     cy.login('admin@admin.com', '123456')
     cy.url().should('eq', 'http://localhost:4173/')
     cy.contains('Rick Sanchez').click()

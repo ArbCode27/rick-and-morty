@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+//@ts-ignore
 Cypress.Commands.add('login', (email: string, password: string) => {
   cy.visit('/login')
   cy.get('#email').type(email)
