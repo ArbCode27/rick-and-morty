@@ -9,13 +9,13 @@
       <p class="hidden md:block">Rick and Morty</p>
     </RouterLink>
 
-    <RouterLink
+    <div class="flex gap-2">
+      <RouterLink
       v-if="session.session === false"
       :to="{ name: 'login' }"
-      class="btn btn-outline btn-primary px-8"
-      >Login</RouterLink
-    >
-    <div class="flex gap-2">
+      class="btn btn-primary px-8"
+      >Login
+      </RouterLink>
       <button
         v-if="session.session && route.path !== '/game'"
         class="btn btn-primary px-8"
@@ -23,7 +23,7 @@
       >
         Game
       </button>
-      <button v-if="session.session" class="btn btn-outline btn-error px-8" @click="session.logout">
+      <button v-if="session.session" class="btn btn-error px-8" @click="session.logout">
         Logout
       </button>
     </div>

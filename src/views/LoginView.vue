@@ -9,6 +9,7 @@
     <div class="hero-content w-full flex-col items-center justify-end lg:flex-row-reverse">
       <div class="text-center max-w-[400px] lg:text-left">
         <h1 class="text-5xl font-bold">Login now!</h1>
+        
         <p class="py-6">
           Join the wildest dimension in the multiverse! Sign up now on our Rick and Morty website
           for exclusive content, theories, episodes, and more. Don't miss out on the adventure!
@@ -16,6 +17,10 @@
       </div>
       <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <form class="card-body">
+          <select class="select w-full max-w-xs">
+              <option disabled selected>Access data</option>
+              <option>email: admin@admin.com password: 123456</option>
+            </select>
           <div v-if="session.error" class="w-full flex justify-center text-cencer text-red-700">
             <div role="alert" class="alert alert-error">
               <svg
